@@ -2,7 +2,7 @@ Cypress.Commands.add('OrangeLogin', () => {
   cy.visit()
 })
 
-Cypress.Commands.add('SingleUserLogin', () => {
+Cypress.Commands.add('ValidLogin', () => {
     cy.fixture('single').then(data => {
         cy.get('[data-test="username"]').type(data.username)
         cy.get('[data-test="password"]').type(data.password)
@@ -10,27 +10,32 @@ Cypress.Commands.add('SingleUserLogin', () => {
     })
 })
 
-Cypress.Commands.add('MultiUserLogin', () => {
-    //load data from the JSON file using fixture
-    cy.fixture('multi').then(user => {
-        //Use for-each loop to read all the data from the set
-        user.forEach((data) => {
-          cy.visit('https://www.saucedemo.com/v1/')
-            //Enter lockedout user's credentials
-            cy.get('[data-test="username"]').type(data.username)
-            cy.get('[data-test="password"]').type(data.password)
-            cy.get('#login-button').click()
-            cy.ApplyAssert(data.assert_text)
-        })
-    })
+Cypress.Commands.add('doAssert', (locator, assertTxt) => {
+  cy.get(locator).should('have.text',assertTxt)
 })
 
-Cypress.Commands.add('ApplyAssert', (expected_text) => {
-    cy.fixture('multi').then(user => {
-        user.forEach((data) => {
-            cy.get('[data-test="error"]').should('have.text', expected_text)
-        })
-    })
+Cypress.Commands.add('MultiUserLogin', () => {
+  //load data from the JSON file using fixture
+  cy.fixture('Login').then(user => {
+      //Use for-each loop to read all the data from the set
+      user.forEach((data) => {
+        cy.visit('https://www.saucedemo.com/v1/')
+          //Enter lockedout user's credentials
+          cy.get('[data-test="username"]').type(data.username)
+          cy.get('[data-test="password"]').type(data.password)
+          cy.get('#login-button').click()
+      })
+  })
+})
+
+Cypress.Commands.add('Login', ()=>{
+    //Enter the credentials and click login
+    cy.get('[data-test="username"]').type("standard_user")
+    cy.get('[data-test="password"]').type("secret_sauce")
+    cy.get('#login-button').click()
+
+    //Assertion for Login 
+    cy.get('.product_label').should("have.text","Products")
 })
 
 Cypress.Commands.add('AddToCart', () => {

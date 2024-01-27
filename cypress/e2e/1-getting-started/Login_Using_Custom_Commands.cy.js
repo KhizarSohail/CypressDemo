@@ -10,12 +10,12 @@ describe('Loging in with valid user and checking Add to cart', () => {
 
   it('Smoke: Single Item into Cart', () => {
     //reading single user data from the Json file
-    cy.SingleUserLogin()  
+    cy.ValidLogin()  
     cy.AddToCart()
   })
   
   it('Reads Singular Data From JSON File', () => {
-      cy.SingleUserLogin()
+      cy.ValidLogin()
     })
   })
 

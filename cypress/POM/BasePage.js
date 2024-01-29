@@ -5,9 +5,13 @@ class BasePage
         cy.visit(link)
     }
 
+    Verify(loc, text){
+        cy.get(loc).should('have.text',text)
+    }
+
     Action(option, loc, input = "")
     {
-        Option.toLowerCase()
+        option.toLowerCase()
         try {
             if(option == 'write' || option == 'type')
                 {
@@ -30,6 +34,8 @@ class BasePage
             console.log(error ,'Please enter "write" or "click" to perfom the action')
         }
     }
+
+
 }
 
 export default BasePage

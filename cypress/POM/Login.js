@@ -1,5 +1,8 @@
 import BasePage from "./BasePage"
 
+
+const bs = new BasePage
+
 class LoginPage
 {
 
@@ -10,10 +13,10 @@ class LoginPage
     assertIV = '[data-test="error"]'
     MultiUser = "../fixtures/loginPage/MultiLogin"
     SingleUser = "../fixtures/loginPage/SingleLogin"
- 
+
+
     Login_With_Valid_User()
     {
-
         cy.fixture(this.SingleUser).then(data => {
             //Use for-each loop to read all the data from the set
             data.forEach((read) => {
@@ -22,12 +25,11 @@ class LoginPage
                 const password = read.password
                 const valid_assert = read.valid_assert           
                 
-                cy.visit('https://www.saucedemo.com/v1/')
-                
-                cy.get(this.usernameTXT).type(username)
-                cy.get(this.passwordTXT).type(password)
-                cy.get(this.submitTXT).click()
-                cy.get(this.assertV).should('have.text', valid_assert)
+                bs.Visit('https://www.saucedemo.com/v1/')
+                bs.Action("write", this.usernameTXT, username)
+                bs.Action("write", this.passwordTXT, password)
+                bs.Action("click", this.submitTXT)                
+                bs.Verify(this.assertV, valid_assert)
             })
         })
     }
@@ -59,7 +61,6 @@ class LoginPage
     }
 
     login_Base_Func(){
-        const bs = new BasePage
         bs.Visit('https://www.saucedemo.com/v1/')
         bs.Action("write", this.usernameTXT, "standard_user")
         bs.Action("write", this.passwordTXT, "secret_sauce")

@@ -1,7 +1,10 @@
 import LoginPage from "../../POM/Login";
 
 describe('Login Page Testcase', () => {
-    beforeEach(() => {
+  
+  const ln = new LoginPage
+  
+  beforeEach(() => {
         //get the website url 
         cy.visit('https://www.saucedemo.com/v1/')
         //Set the viewport to {1920x1080}
@@ -9,14 +12,16 @@ describe('Login Page Testcase', () => {
       })
 
       it('Valid User Login', () => {
-          const ln = new LoginPage
           ln.Login_With_Valid_User()
+          console.log("login with valid user : VERIFIED");
+        });
 
-          console.log("login with valid user : VERIFIED")
-         
-          ln.Login_With_Invalid_User()
+        it('Login With Invalid User', () => {
+          ln.Login_With_Invalid_User
+          console.log("login with Invalid user : VERIFIED");
+        });
 
-          console.log("login with Invalid user : VERIFIED")
-
+        it('Login With Base Method', () => {
+          ln.login_Base_Func();
         });
 })

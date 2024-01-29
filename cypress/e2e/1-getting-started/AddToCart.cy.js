@@ -1,6 +1,5 @@
-/// <reference types="cypress" />
-
-describe('', () => {
+import Inventory from "../../POM/Inventory"
+describe('Contains all the testcases for Inventory Module', () => {
     
     beforeEach(() => {
         cy.visit('')

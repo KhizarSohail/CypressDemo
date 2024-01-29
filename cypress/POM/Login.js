@@ -1,3 +1,5 @@
+import BasePage from "./BasePage"
+
 class LoginPage
 {
 
@@ -54,6 +56,14 @@ class LoginPage
             
             })
         })
+    }
+
+    login_Base_Func(){
+        const bs = new BasePage
+        bs.Visit('https://www.saucedemo.com/v1/')
+        bs.Action("write", this.usernameTXT, "standard_user")
+        bs.Action("write", this.passwordTXT, "secret_sauce")
+        bs.Action("click", this.submitTXT)
     }
 
 }

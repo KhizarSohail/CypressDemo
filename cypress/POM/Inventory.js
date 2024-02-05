@@ -1,4 +1,9 @@
-import Login from "../POM/Login"    
+import LoginPage from "./LoginPage"
+import BasePage from "./BasePage"    
+
+const ln = new LoginPage
+const bs = new BasePage
+
 
 class Inventory{
     
@@ -8,10 +13,18 @@ class Inventory{
     LogoutBtn = ''
     ResetBtn = ''
 
+    hrefSideMenu = ''
+
     Verify_SideMenu(){
-        const ln = new Login
         ln.Login_With_Valid_User()
-        cy.get() 
+        bs.Action(click, this.sidemenuBtn)
+        bs.SVerify('link', this.sidemenuBtn, )
+        bs.Action(click, this.ItemsBtn)
+        bs.Action(click, this.AboutBtn)
+        bs.Action(click, this.LogoutBtn)
+        bs.Action(click, this.ResetBtn)
     }
 
 }
+
+export default Inventory

@@ -3,7 +3,7 @@ Cypress.Commands.add('OrangeLogin', () => {
 })
 
 Cypress.Commands.add('ValidLogin', () => {
-    cy.fixture('single').then(data => {
+    cy.fixture('SingleLogin').then(data => {
         cy.get('[data-test="username"]').type(data.username)
         cy.get('[data-test="password"]').type(data.password)
         cy.get('#login-button').click()
@@ -16,7 +16,7 @@ Cypress.Commands.add('doAssert', (locator, assertTxt) => {
 
 Cypress.Commands.add('MultiUserLogin', () => {
   //load data from the JSON file using fixture
-  cy.fixture('Login').then(user => {
+  cy.fixture('Multilogin').then(user => {
       //Use for-each loop to read all the data from the set
       user.forEach((data) => {
         cy.visit('https://www.saucedemo.com/v1/')

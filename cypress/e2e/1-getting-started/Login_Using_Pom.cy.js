@@ -1,4 +1,4 @@
-import LoginPage from "../../POM/Login";
+import LoginPage from "../../POM/LoginPage";
 
 describe('Login Page Testcase', () => {
   

@@ -8,21 +8,43 @@ const bs = new BasePage
 class Inventory{
     
     sidemenuBtn = '#menu_button_container > div > div:nth-child(3) > div'
-    ItemsBtn = ''
-    AboutBtn = ''
-    LogoutBtn = ''
-    ResetBtn = ''
+    itemsBtn = '#inventory_sidebar_link'
+    aboutBtn = '#about_sidebar_link'
+    logoutBtn = '#logout_sidebar_link'
+    resetBtn = '#reset_sidebar_link'
 
-    hrefSideMenu = ''
-
+    hrefSideMenu = 'https://www.saucedemo.com/v1/inventory.html'
+    hrefitem = 'https://saucelabs.com/'
+    hrefSideMenu = 'https://www.saucedemo.com/v1/index.html'
+    
     Verify_SideMenu(){
-        ln.Login_With_Valid_User()
-        bs.Action(click, this.sidemenuBtn)
-        bs.SVerify('link', this.sidemenuBtn, )
-        bs.Action(click, this.ItemsBtn)
-        bs.Action(click, this.AboutBtn)
-        bs.Action(click, this.LogoutBtn)
-        bs.Action(click, this.ResetBtn)
+        
+        const menuItems = new Set()
+        menuItems.add(this.itemsBtn)
+        menuItems.add(this.aboutBtn)
+        menuItems.add(this.logoutBtn)
+        //menuItems.add(this.resetBtn)
+
+        console.log(menuItems)
+
+        menuItems.forEach(function(value){
+            console.log(value)
+            ln.Login_With_Valid_User()
+            bs.Action('click', value)
+            // bs.Verify('href', value, )
+        }
+        )
+        // ln.Login_With_Valid_User()
+        // bs.Action('click', this.sidemenuBtn)
+        // bs.Action('click', this.itemsBtn)
+        // bs.Verify('href', this.itemsBtn, this.hrefSideMenu)
+        // cy.go(-1)
+        // bs.Action('click', this.aboutBtn)
+        // cy.go(-1)
+        // bs.Action('click', this.logoutBtn)
+        // cy.go(-1)
+        // bs.Action('click', this.resetBtn)
+        // cy.go(-1)
     }
 
 }

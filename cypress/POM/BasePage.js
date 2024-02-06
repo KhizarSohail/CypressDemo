@@ -1,27 +1,11 @@
 class BasePage
 {
 
-    Visit(link){
-        cy.visit(link)
+    Visit(){
+        cy.visit('https://www.saucedemo.com/v1/')
     }
 
-    // IfVerify(option, loc, ev){
-    //     option.toLowerCase()
-    //     try {
-    //         if (option == 'have.text') {
-    //             cy.get(loc).should('have.text',ev)    
-    //         } else if (option == 'length') {
-    //             cy.get(loc).should('have.length', ev)
-    //         } else if (option == 'include.text') {
-    //             cy.get(loc).should('include.text',ev)    
-    //         } else if (option == 'include.text') {
-    //             cy.get(loc).should('include.text',ev)    
-    //         } 
-    //     } catch (error) {
-    //         console.log('enter proper values!!!',error)
-    //     }
-    // }
-    SVerify(option, loc, ev){
+    Verify(option, loc, ev){
         option.toLowerCase()
         try {
            switch (option) {
@@ -47,9 +31,6 @@ class BasePage
         }
     }
 
-    LinkCheck(){
-
-    }
 
     Action(option, loc, input = "")
     {
@@ -58,7 +39,7 @@ class BasePage
             if(option == 'write' || option == 'type')
                 {
                  try{                
-                    cy.get(loc).type(input)
+                    cy.get(loc).type(input, {force:true})
                 }
                 catch(error){
                     console.log(error, "Please give value 'write' or 'type'")
@@ -66,7 +47,7 @@ class BasePage
                 }
             else if(option == 'click'){
                 try{                
-                    cy.get(loc).click()
+                    cy.get(loc).click({force:true})
                 }
                 catch(error){
                     console.log(error, "Please give value 'click' to perform click")

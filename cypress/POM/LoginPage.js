@@ -1,11 +1,12 @@
 import BasePage from "./BasePage"
 
-
+// object for BasePage
 const bs = new BasePage
 
 class LoginPage
 {
 
+    // Class Variables  
     usernameTXT = '[data-test="username"]'
     passwordTXT = '[data-test="password"]'
     submitTXT = '#login-button'
@@ -25,11 +26,12 @@ class LoginPage
                 const password = read.password
                 const valid_assert = read.valid_assert           
                 
-                bs.Visit('https://www.saucedemo.com/v1/')
+                bs.Visit()
+                
                 bs.Action("write", this.usernameTXT, username)
                 bs.Action("write", this.passwordTXT, password)
                 bs.Action("click", this.submitTXT)                
-                bs.Verify(this.assertV, valid_assert)
+                bs.Verify("include.text", this.assertV, valid_assert)
             })
         })
     }
@@ -44,29 +46,21 @@ class LoginPage
                 const valid_assert = read.valid_assert           
                 const invalid_assert = read.invalid_assert           
                 
-                cy.visit('https://www.saucedemo.com/v1/')
+                bs.Visit()
                 
-                cy.get(this.usernameTXT).type(username)
-                cy.get(this.passwordTXT).type(password)
-                cy.get(this.submitTXT).click()
+                bs.Action("write", this.usernameTXT, username)
+                bs.Action("write", this.passwordTXT, password)
+                bs.Action("click", this.submitTXT)        
 
                 if(username == "standard_user"){                    
-                    cy.get(this.assertV).should('have.text', valid_assert)
+                    bs.Verify("include.text", this.assertV, valid_assert)
                 }else{
-                    cy.get(this.assertIV).should('have.text', invalid_assert)
+                    bs.Verify("include.text", this.assertV, invalid_assert)
                 }
             
             })
         })
     }
-
-    login_Base_Func(){
-        bs.Visit('https://www.saucedemo.com/v1/')
-        bs.Action("write", this.usernameTXT, "standard_user")
-        bs.Action("write", this.passwordTXT, "secret_sauce")
-        bs.Action("click", this.submitTXT)
-    }
-
 }
 
 export default LoginPage

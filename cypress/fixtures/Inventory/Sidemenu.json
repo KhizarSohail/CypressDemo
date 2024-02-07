@@ -1,0 +1,16 @@
+[
+    {
+        "sidemenuBtn" : "#menu_button_container > div > div:nth-child(3) > div",
+        "itemsBtn" : "#inventory_sidebar_link",
+        "aboutBtn" : "#about_sidebar_link",
+        "logoutBtn" : "#logout_sidebar_link",
+        "resetBtn" : "#reset_sidebar_link",
+        "hrefSideMenu" : "https://www.saucedemo.com/v1/inventory.html",
+        "hrefitem" : "https://saucelabs.com/"
+    }
+    
+]
+
+    
+
+

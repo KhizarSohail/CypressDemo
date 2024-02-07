@@ -11,11 +11,12 @@ describe('Contains all the testcases for Inventory Module', () => {
 
     beforeEach(() => {
         cy.viewport(1920,1080)
+        bs.Visit()
     })
 
-    it('Verify Side Menu Items', () => {
+    it('Add the items in the cart', () => {
         log.Login_With_Valid_User()
-        inv.Verify_SideMenu()
+        inv.Add_to_cart()
     });
 
 }) 

@@ -39,7 +39,7 @@ class BasePage
             if(option == 'write' || option == 'type')
                 {
                  try{                
-                    cy.get(loc).type(input, {force:true})
+                    cy.get(loc).type(input)
                 }
                 catch(error){
                     console.log(error, "Please give value 'write' or 'type'")
@@ -47,7 +47,7 @@ class BasePage
                 }
             else if(option == 'click'){
                 try{                
-                    cy.get(loc).click({force:true})
+                    cy.get(loc).click()
                 }
                 catch(error){
                     console.log(error, "Please give value 'click' to perform click")

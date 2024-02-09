@@ -16,7 +16,7 @@ describe('Contains all the testcases for Inventory Module', () => {
 
     it('Add the items in the cart', () => {
         log.Login_With_Valid_User()
-        inv.Add_to_cart()
+        inv.Access_Cart()
     });
 
 }) 

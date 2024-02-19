@@ -3,6 +3,7 @@ class BasePage
 
     Visit(){
         cy.visit('https://www.saucedemo.com/v1/')
+        cy.viewport(1920,1080)
     }
 
     Verify(option, loc, ev){

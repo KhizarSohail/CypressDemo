@@ -1,4 +1,3 @@
-import LoginPage from "./LoginPage"
 import BasePage from "./BasePage"    
 
 const bs = new BasePage
@@ -6,23 +5,27 @@ const bs = new BasePage
 
 class Inventory{
     
+    //CLASS VARIABLE 
     Inventory = "../fixtures/Inventory/Inventory.json"
     
 
-    Access_Cart(){
+    //CLICK ON THE CART ICON
+    Access_Cart(){ 
         this.Adding_items_to_Cart()
         cy.fixture(this.Inventory).then(data => {
             data.forEach((read)=>{
                 const scart = read.shopping_cart
+                const checkout = read.checkout_btn
                 cy.log(scart) 
                 bs.Action('click',scart)
+                bs.Action('click',checkout)
             })
-
         })
+
     }
 
+    //ADD ITEMS/PRODUCTS IN THE CART
     Adding_items_to_Cart(){
-        
         cy.fixture(this.Inventory).then(data => {
             data.forEach((read) => {
                 const products = [

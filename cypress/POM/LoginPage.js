@@ -8,7 +8,6 @@ class LoginPage
 
     // Class Variables  
     usernameTXT = '[data-test="username"]'
-    passwordTXT = '[data-test="password"]'
     submitTXT = '#login-button'
     assertV = '.product_label'
     assertIV = '[data-test="error"]'
